@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class StringManipulationTest {
-    
+
     // MANUAL TESTS:
 
     @Test
@@ -68,5 +68,45 @@ public class StringManipulationTest {
 
         assertEquals(expectedLen, res, "Should be separate lengths for each repeated character coming later in the array");
     }
-    
+
+    @Test
+    public void testConsecutiveSingleCharacters() {
+        char[] inputArr = {'a', 'b', 'c', 'd', 'e'};
+        int expectedLen = inputArr.length;
+
+        int res;
+        StringManipulation sm = new StringManipulation();
+        res = sm.compress(inputArr);
+
+        assertEquals(expectedLen, res, "Should be identical to input");
+    }
+
+    @Test
+    public void testTripleDigitRepetitions() {
+        char[] inputArr = new char[100];
+        for (int i = 0; i < 100; i++) {
+            inputArr[i] = 'x';
+        }
+        int expectedLen = 4; // "x", "1", "0", "0"
+
+        int res;
+        StringManipulation sm = new StringManipulation();
+        res = sm.compress(inputArr);
+
+        assertEquals(expectedLen, res, "Should handle a large count of repeated characters correctly");
+    }
+
+    @Test
+    public void testMultipleRepeatsWithSingleOccurrence() {
+        char[] inputArr = {'a', 'a', 'b', 'c', 'c', 'c', 'd'};
+        int expectedLen = 6; // "a", "2", "b", "c", "3", "d"
+
+        int res;
+        StringManipulation sm = new StringManipulation();
+        res = sm.compress(inputArr);
+
+        assertEquals(expectedLen, res, "Should handle isolated characters correctly");
+    }
+
+
 }
