@@ -23,7 +23,7 @@ public class StringManipulationTestAI {
     @Test
     public void testMixedRepetitions() {
         char[] inputArr = {'a', 'a', 'b', 'b', 'b', 'c', 'd', 'd', 'd', 'd', 'e'};
-        int expectedLen = 8;  // Adjusted expected length to 8 based on function behavior
+        int expectedLen = 8;
 
         int res;
         StringManipulation sm = new StringManipulation();
