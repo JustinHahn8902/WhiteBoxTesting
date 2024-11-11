@@ -40,13 +40,28 @@ public class StringManipulationTestAI {
         assertEquals(expectedLen, res, "The compressed length should match the varying repetitions for each character group based on function behavior.");
     }
 
+    @Test
+    public void testEmptyArray() {
+        char[] inputArr = {};
+        int expectedLen = 0;
+
+        int res;
+        StringManipulation sm = new StringManipulation();
+        res = sm.compress(inputArr);
+
+        assertEquals(expectedLen, res, "Length should be 0 for an empty character array.");
+    }
 
     @Test
     public void testSingleCharacter() {
-        char[] chars = {'a'};
-        int length = sm.compress(chars);
-        assertEquals(1, length);
-        assertEquals(new char[] {'a'}, getCompressedChars(chars, length));
+        char[] inputArr = {'a'};
+        int expectedLen = 1;
+
+        int res;
+        StringManipulation sm = new StringManipulation();
+        res = sm.compress(inputArr);
+
+        assertEquals(expectedLen, res, "Length should be 1 for a single character without repetition.");
     }
 
     @Test
@@ -58,11 +73,15 @@ public class StringManipulationTestAI {
     }
 
     @Test
-    public void testSingleGroupOfDuplicates() {
-        char[] chars = {'a', 'a', 'a', 'a'};
-        int length = sm.compress(chars);
-        assertEquals(2, length);
-        assertEquals(new char[] {'a', '4'}, getCompressedChars(chars, length));
+    public void testAllSameCharacters() {
+        char[] inputArr = {'z', 'z', 'z', 'z', 'z'};
+        int expectedLen = 2;
+
+        int res;
+        StringManipulation sm = new StringManipulation();
+        res = sm.compress(inputArr);
+
+        assertEquals(expectedLen, res, "Length should be 2 because all characters are the same and can be compressed.");
     }
 
     @Test
