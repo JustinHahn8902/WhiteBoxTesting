@@ -108,5 +108,39 @@ public class StringManipulationTest {
         assertEquals(expectedLen, res, "Should handle isolated characters correctly");
     }
 
+    @Test
+    public void testNonLetters() {
+        char[] inputArr = {'!', '!', '#', '#', '@', '@', '@'};
+        int expectedLen = 6; // "!", "2", "#", "2", "@", "3"
 
+        int res;
+        StringManipulation sm = new StringManipulation();
+        res = sm.compress(inputArr);
+
+        assertEquals(expectedLen, res, "Should handle non-letter characters correctly");
+    }
+
+    @Test
+    public void testNullCharacters() {
+        char[] inputArr = {'a', '\0', '\0','\0', 'b'};
+        int expectedLen = 4; // "a", "\0", "3", "b"
+
+        int res;
+        StringManipulation sm = new StringManipulation();
+        res = sm.compress(inputArr);
+
+        assertEquals(expectedLen, res, "Should handle null characters correctly");
+    }
+
+    @Test
+    public void testNewlineCharacters() {
+        char[] inputArr = {'a', '\n', '\n', 'b'};
+        int expectedLen = 4; // "a", "\n", "2", "b"
+
+        int res;
+        StringManipulation sm = new StringManipulation();
+        res = sm.compress(inputArr);
+
+        assertEquals(expectedLen, res, "Should handle newline characters correctly");
+    }
 }
